@@ -3,6 +3,15 @@
 #Copyright (c) 2011-2017 NVDA Contributors
 #This file is covered by the GNU General Public License.
 
+complexSymbols:
+# identifier	regexp
+# Sentence endings.
+. sentence ending	(?<=[^\s.])\.(?=[\"'”’)\s]|$)
+! sentence ending	(?<=[^\s!])\!(?=[\"'”’)\s]|$)
+? sentence ending	(?<=[^\s?])\?(?=[\"'”’)\s]|$)
+# Phrase endings.
+; phrase ending	(?<=[^\s;]);(?=\s|$)
+: phrase ending	(?<=[^\s:]):(?=\s|$)
 # Others
 decimal point	(?<![^\d -])\.(?=\d)
 in-word '	(?<=[^\W_])['’]
@@ -11,75 +20,19 @@ negative number	(?<!\w)-(?=[$£€¥.]?\d)
 symbols:
 # identifier	replacement[[	level][	preserve]][	# display name]
 
-# Python Mappings
-
-\t	indent	all
-
-=	set to 	all
-"	string	all
-
-# Python Boolean operators
-==	boolean equals	all
-!=	boolean not equals	all
-<	boolean less than	all
->	boolean greater than	all
-<=	boolean less than or equal to	all
->=	boolean greater than or equal to	all
-!	not	all
-
-# Python Arithmetic Operators
-+	added to	all
--	subtracted  by	all
-*	multiplied by	all
-/	divided by	all
-%	modulus by	all
-**	to the exponent of	all
-//	Floor divided by	all
-
-# Python Assignment Operators
-=	set to 	all
-+=	set to self plus	all	
--=	set to self minus	all	
-*=	set to self times	all	
-/=	set to self divided by	all	
-%=	set to self modulo	all
-//=	set to self floor divide by	all	
-**=	set to self to the exponent of	all
-
-# Python Bitwise Operators
-# &=	x &= 3	x = x & 3	
-# |=	x |= 3	x = x | 3	
-# ^=	x ^= 3	x = x ^ 3	
-# >>=	x >>= 3	x = x >> 3	
-# <<=	x <<= 3	x = x << 3	
-
-# Python Lists, objects and function parameters
-(	begin arguments	most
-)	end arguments	most
-{	begin object	all
-}	end object	all
-[	begin list	all
-]	end list	all
-
-# Python Misc Operators
-:	object equals	some
-.	property	all
-
-# Python Comments
-\#	one line comment	all
-""" multi line comment	all
-
-
 # Complex symbols
+. sentence ending	dot	all	always
+! sentence ending	bang	all	always
 ? sentence ending	question	all	always
 ; phrase ending	semi	most	always
+: phrase ending	colon	most	always
 decimal point		none	always
 in-word '	tick	all	norep
 negative number	minus	none	norep
 
 # Whitespace
 \0	blank	char	# null
-
+\t	tab
 \n	line feed	char
 \f	page break	none
 \r	carriage return	char
@@ -87,7 +40,9 @@ negative number	minus	none	norep
  	space	char	# no-break space
 
 # Standard punctuation/symbols
+!	bang	all
 "	quote	most
+\#	number	some
 $	dollar	all	norep
 £	pound	all	norep
 €	euro	all	norep
@@ -97,19 +52,30 @@ $	dollar	all	norep
 %	percent	some
 &	and	some
 '	tick	all
+(	left paren	most	always
+)	right paren	most	always
 *	star	some
 +	plus	some
 ,	comma	all	always
 -	dash	most
 .	dot	some
 /	slash	some
+:	colon	most	norep
 ;	semi	most
+<	less	some
+>	greater	some
+=	equals	some
 ?	question	all
 @	at	some
+[	left bracket	most
+]	right bracket	most
 \\	backslash	most
 ^	caret	most
 _	line	most
 `	graav	most
+{	left brace	most
+}	right brace	most
+|	bar	most
 ~	tilda	most
 
 # Other characters
